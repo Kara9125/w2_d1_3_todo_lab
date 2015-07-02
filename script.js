@@ -1,34 +1,36 @@
-$(function(){
-
-var $newItemForm = $("#new_thing_to_do");
-console.log($newItemForm);
-var toDoList = [];
-
-$newItemForm.on("submit", function(event){
-	event.preventDefault();
-	// console.log('form submitted');
-	console.log($('#item_name').val()); 
-	var $newLI = $('<li>' + $ ('#item_name').val() + '</li>');
-	$('#to_do_list').append($newLI);
-
-	toDoList.push({
-		item_name : $('#item_name').val(),
-		quantity : 1
-			})
-console.log(toDoList)
+function Todos (Title, description)
+this.title = title;	
+this.description = description;
 
 
-var item1 = { item_name: "olive oil",
-			   quantity: 2
-			   };
 
-toDoList.push(item1);
+ToDo.all = [];
 
- });
-$('ul').on("click","li", function(){
-	console.log("clicked")
+ToDo.prototype.save = function(){
+	ToDo.all.push(this);
+	console.log(ToDo.all);
+}
+
+
+var toDoName = $('#todo-name').val();
+var toDoDesc = $('#todo-desc').val();
+var toDoData = {name: toDoName, desc: toDoDesc};
+
+
+toDos.push(toDoData);
+
+
+$toDoList.append('<li class="todo">' + toDoData.name + ' - ' + toDoData.desc + '</li>');
+
+
+$newToDo[0].reset();
+$('#todo-name').focus();
+});
+
+
+$toDoList.on('click', '.todo', function() {
 	$(this).addClass("done");
 })
 
-});
+};
 
